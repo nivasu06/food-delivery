@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Delivery App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            font-family: Arial, sans-serif;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #333;
+            padding: 10px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .navbar a {
+            color: white;
+            padding: 14px 20px;
+            text-decoration: none;
+            margin: 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .navbar .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .navbar .logo i {
+            font-size: 24px;
+            margin-right: 10px;
+        }
+
+        .navbar .logo strong {
+            font-size: 24px;
+        }
+
+        .search-bar {
+            flex: 1;
+            margin: 0 20px;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 6px;
+            box-sizing: border-box;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown:hover .dropbtn {
+            background-color: #3e8e41;
+        }
+
+        .dropdown .dropbtn {
+            display: flex;
+            align-items: center;
+        }
+
+        .dropdown .dropbtn i {
+            margin-right: 8px;
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .search-bar input {
+                width: calc(100% - 20px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="/" class="logo" aria-label="Home">
+            <i class="fas fa-home"></i>
+            <strong>N<span>AVV</span></strong>
+        </a>
+        <div class="search-bar">
+            <input type="text" placeholder="Search...">
+        </div>
+        <a href="#"><i class="fas fa-filter"></i> Filter</a>
+        <a href="/support"><i class="fas fa-question-circle"></i> Help</a>
+        <a href="/cart"><i class="fas fa-shopping-cart"></i> Cart</a>
+        <div class="dropdown">
+            <a href="#" class="dropbtn"><i class="fas fa-map-marker-alt"></i> Location</a>
+            <div class="dropdown-content">
+                <a href="/food/locations/Chittoor">Chittoor</a>
+                <a href="/food/locations/Nellore">Nellore</a>
+                <a href="/food/locations/Markapuram">Markapuram</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <a href="#" class="dropbtn"><i class="fas fa-bars"></i> Menu</a>
+            <div class="dropdown-content">
+                <% if (user) { %>
+                    <a href="#"><i class="fas fa-shopping-cart"></i>Order</a>
+                    <a href="/profile"><i class="fas fa-user"></i> Profile</a>
+                    <a href="/food/users/logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    <% if (user.type === "Seller") { %>
+                        <a href="/food/posthotel"><i class="fas fa-hotel"></i> Post Hotel</a>
+                    <% } %>
+                <% } else { %>
+                    <a href="/food/users/signup"><i class="fas fa-sign-in-alt"></i> Sign Up</a>
+                    <a href="/food/users/signin"><i class="fas fa-user"></i> Login</a>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

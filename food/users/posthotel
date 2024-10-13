@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post a Hotel</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-image: url("https://www.shutterstock.com/image-vector/food-kitchen-seamless-pattern-pale-600nw-276735071.jpg");
+        }
+        .container {
+            max-width: 600px;
+            margin-top: 50px;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-control {
+            border-radius: 4px;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 20px;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+        .alert {
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <%- include('navbar') %>
+
+    <div class="container">
+        <h2 class="text-center mb-4">Post a Hotel</h2>
+        <% if (typeof errorMessage !== 'undefined' && errorMessage) { %>
+            <div class="alert alert-danger" role="alert">
+                <%= errorMessage %>
+            </div>
+        <% } %>
+        <form action="/food/users/posthotel" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="type">Type of Establishment</label>
+                <select id="type" name="type" class="form-control" required>
+                    <option value="hotel">Hotel</option>
+                    <option value="icecream_shop">Ice Cream Shop</option>
+                    <option value="juice_shop">Juice Shop</option>
+                    <option value="fastfood_center">Fast Food Center</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="name">Hotel Name</label>
+                <input type="text" id="name" name="name" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="image">Hotel Picture</label>
+                <input type="file" id="image" name="image" accept="image/*" class="form-control-file" required>
+            </div>
+            <div class="form-group">
+                <label for="address">Hotel Address</label>
+                <textarea id="address" name="address" class="form-control" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="city">Hotel City</label>
+                <input type="text" id="city" name="city" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="items">Items and Costs (Item - Cost - Image URL, separated by commas)</label>
+                <textarea id="items" name="items" class="form-control" placeholder="Example: Item1 - $10 - image1.jpg, Item2 - $15 - image2.jpg" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Submit</button>
+        </form>
+    </div>
+</body>
+</html>

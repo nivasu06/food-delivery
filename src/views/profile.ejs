@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-image: url("https://www.shutterstock.com/image-vector/food-kitchen-seamless-pattern-pale-600nw-276735071.jpg");
+        }
+        .container {
+            max-width: 600px;
+            margin-top: 50px;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 20px;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+        .card {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <%- include('navbar') %>
+
+    <div class="container">
+        <h2 class="text-center mb-4">Profile</h2>
+        
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">User Information</h5>
+                <p class="card-text"><strong>Name:</strong> <%= user.name %></p>
+                <p class="card-text"><strong>Email:</strong> <%= user.email %></p>
+                <p class="card-text"><strong>Type:</strong> <%= user.type %></p>
+                <a href="/food/users/changepassword" class="btn btn-primary">Change Password</a>
+                
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">About Food Navv App</h5>
+                <p class="card-text">
+                    Welcome to the Food Navv app, your go-to solution for discovering and ordering delicious food from your favorite restaurants. Our app offers a seamless experience to browse menus, place orders, and enjoy quick delivery services. We aim to make your dining experience enjoyable and convenient with a wide range of options and features.
+                    <% if (user.type === "Seller") { %>
+                        <h3>IF ANY ADDONS TO YOUR HOTEL OR SHUTDOWN OF HOTEL PLS REACH TO HELP SUPPORT</h3>
+                        <a href="/support" class="btn btn-primary">Help</a>
+                        <%}%>
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
